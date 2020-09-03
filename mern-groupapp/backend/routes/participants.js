@@ -1,6 +1,6 @@
 const router = require('express').Router();
 let Participant = require('../models/participant.model');
-let Book = require('../models/book.model').schema;
+let Book = require('../models/book.model');
 
 
 // returns collection of participants

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-//let Group = require('../models/group.model').schema;
+let Group = require('../models/group.model');
 let Neighborhood = require('../models/neighborhood.model');
 
 
@@ -40,7 +40,7 @@ router.route('/add_group/:id/').post((req, res) => {
         }
         if(!data.length){
           console.log("couldnt find the group")
-          const group = new Group({name, location});
+          const group = new Group({name, location,});
           group.save()
           .then(group => {
             l = neighborhood.groups.push(group._id);
@@ -48,12 +48,12 @@ router.route('/add_group/:id/').post((req, res) => {
                        .then(() => res.json('Group added to neighborhood and to collection!'))
                        .catch(err => res.status(400).json('Error on neighborhood save: ' + err));
           })
-          .catch(err => res.status(400).json('Error on neighborhood save: ' + err));
+          .catch(err => res.status(400).json('Error on group save: ' + err));
           
         }else{
           console.log("found the group!")
-          group.books.push(data[0]);
-          group.save()
+          neighborhood.groups.push(data[0]);
+          neighborhood.save()
                      .then(() => res.json('Group added to neighborhood!'))
                      .catch(err => res.status(400).json('Error on neighborhood save: ' + err));
         }

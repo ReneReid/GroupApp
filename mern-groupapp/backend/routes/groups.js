@@ -147,7 +147,7 @@ router.route('/add_lesson/:id').post((req, res) => {
       });
       lesson.save()
       .then(lesson => {
-        l = group.lesson.push(lesson._id);
+        l = group.lessons.push(lesson._id);
         group.save()
              .then(() => res.json('Lesson added!'))
              .catch(err => res.status(400).json('Error on group save: ' + err));

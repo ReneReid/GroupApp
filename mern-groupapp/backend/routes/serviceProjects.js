@@ -1,8 +1,8 @@
 const router = require('express').Router();
-let Participant = require('../models/participant.model').schema;
-let Facilitator = require('../models/facilitator.model').schema;
-let Book = require('../models/book.model').schema;
-let OtherStakeholder = require('../models/otherStakeholders.model').schema;
+let Participant = require('../models/participant.model');
+let Facilitator = require('../models/facilitator.model');
+let Book = require('../models/book.model');
+let OtherStakeholder = require('../models/otherStakeholders.model');
 let ServiceProject = require('../models/serviceProject.model');
 
 // returns collection of service projects

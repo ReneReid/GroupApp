@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let Participant = require('../models/participant.model').schema;
+let Participant = require('../models/participant.model');
 let OtherStakeholder = require('../models/otherStakeholders.model');
 
 // returns collection of other stakeholders
@@ -22,7 +22,8 @@ router.route('/add').post((req, res) => {
     name,
     emailAddress, 
     cellNumber,
-    address
+    address,
+    participants: [],
   });
 
   newOtherStakeholder.save()
@@ -49,8 +50,8 @@ router.route('/add_participant/:id/').post((req, res) => {
                .catch(err => res.status(400).json('Error on group save ' + err));
         } else {
           console.log("found the participant!")
-          otherStakeholder.participants.push(data[0]);
-          otherStakeholder.save()
+          otherStakeholders.participants.push(data[0]);
+          otherStakeholders.save()
                .then(() => res.json('Participant added to otherStakeholders!'))
                .catch(err => res.status(400).json('Error on group save: ' + err));
 
